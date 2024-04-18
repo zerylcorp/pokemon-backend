@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -11,14 +9,37 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      User.hasMany(models.My_pokemon, { foreignKey: "userId" });
     }
   }
-  User.init({
-    username: DataTypes.STRING,
-    password: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'User',
+  User.init(
+    {
+      username: {
+        allowNull: false,
+        type: DataTypes.STRING,
+        validate: {
+          notNull: { message: "username is require" },
+          notEmpty: { message: "not allowed empty character" },
+        },
+      },
+      password: {
+        allowNull: false,
+        type: DataTypes.STRING,
+        validate: {
+          notNull: { message: "password is require" },
+          notEmpty: { message: "not allowed empty character" },
+          min: 5,
+          len: [5, 16],
+        },
+      },
+    },
+    {
+      sequelize,
+      modelName: "User",
+    }
+  );
+  User.addHook("beforeCreate", (user) => {
+    user.password = hashingPassword(user.password);
   });
   return User;
 };

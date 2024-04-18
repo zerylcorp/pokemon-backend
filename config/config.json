@@ -2,7 +2,7 @@
   "development": {
     "username": "postgres",
     "password": "root",
-    "database": "mini_pokemon",
+    "database": "pokemon_develop",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
