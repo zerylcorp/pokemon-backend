@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const user = require('./user.router')
-const pokemon = require('./pokemon.router')
+const user = require("./user.router");
+const pokemon = require("./pokemon.router");
 
 router.get("/", (req, res, next) => {
   res.status(200).json({
@@ -9,7 +9,7 @@ router.get("/", (req, res, next) => {
   });
 });
 
-router.use('/user',pokemon)
-router.use('/pokemon',pokemon)
+router.use("/user", user);
+router.use("/pokemon", pokemon);
 
 module.exports = router;

@@ -1,10 +1,15 @@
-const router = require('express').Router()
+const Controller = require("../controllers/user.controller");
+
+const router = require("express").Router();
 
 router.get("/", (req, res, next) => {
-    res.status(200).json({
-      status: true,
-      message: "Hello Testing User",
-    });
+  res.status(200).json({
+    status: true,
+    message: "Hello Testing User",
   });
+});
 
-module.exports = router
+router.post("/register", Controller.register);
+router.post("/login", Controller.login);
+
+module.exports = router;

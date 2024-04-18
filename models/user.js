@@ -1,5 +1,7 @@
 "use strict";
 const { Model } = require("sequelize");
+const { hashingPassword } = require("../helpers/bcrypt");
+
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -17,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
       username: {
         allowNull: false,
         type: DataTypes.STRING,
+        unique: { message: "username already exist" },
         validate: {
           notNull: { message: "username is require" },
           notEmpty: { message: "not allowed empty character" },
