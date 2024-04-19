@@ -15,8 +15,10 @@ module.exports = (sequelize, DataTypes) => {
   My_pokemon.init(
     {
       userId: DataTypes.INTEGER,
+      pokemonId: DataTypes.STRING,
       pokemonName: DataTypes.STRING,
       changeOfName: DataTypes.STRING,
+      deletedAt: DataTypes.BOOLEAN,
     },
     {
       sequelize,

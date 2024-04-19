@@ -9,6 +9,7 @@ router.get("/", (req, res, next) => {
   });
 });
 
+
 router.use("/user", user);
 router.use("/pokemon", pokemon);
 

@@ -16,6 +16,9 @@ module.exports = {
           key: "id",
         },
       },
+      pokemonId: {
+        type: Sequelize.STRING,
+      },
       pokemonName: {
         type: Sequelize.STRING,
       },
@@ -30,6 +33,10 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
+      },
+      deletedAt: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
       },
     });
   },

@@ -1,6 +1,5 @@
-const Controller = require("../controllers/user.controller");
-
 const router = require("express").Router();
+const Controller = require("../controllers/user.controller");
 
 router.get("/", (req, res, next) => {
   res.status(200).json({
