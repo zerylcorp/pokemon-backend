@@ -39,10 +39,23 @@ class Controller {
   static async getAllMyPokemon(req, res, next) {
     try {
       const myPokemon = await PokemonRepository.getMyPokemonAll();
+      const myList = [];
+      for (let i = 0; i < myPokemon.length; i++) {
+        const poke = myPokemon[i].dataValues;
+        // console.log(poke);
+        const pokemon = await PokemonRepository.getPoke({ pokemonId: poke.id });
+        const details = pokemon.data;
+        console.log(details.name);
 
+        const payload = {
+          ...poke,
+          imageUrl: details.sprites.front_default ? details.sprites.front_default : details.sprites.front_shiny,
+        };
+        myList.push(payload);
+      }
       return res.status(200).json({
         status: "Success",
-        data: myPokemon,
+        data: myList,
       });
     } catch (error) {
       next(error);
