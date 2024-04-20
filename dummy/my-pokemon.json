@@ -1,0 +1,82 @@
+[
+  {
+    "id": 25,
+    "userId": 1,
+    "pokemonId": 4,
+    "pokemonName": "charmander",
+    "changeOfName": "0",
+    "deletedAt": false
+  },
+  {
+    "id": 24,
+    "userId": 1,
+    "pokemonId": 47,
+    "pokemonName": "parasect",
+    "changeOfName": "0",
+    "deletedAt": false
+  },
+  {
+    "id": 23,
+    "userId": 1,
+    "pokemonId": 9,
+    "pokemonName": "blastoise-0",
+    "changeOfName": "1",
+    "deletedAt": false
+  },
+  {
+    "id": 22,
+    "userId": 1,
+    "pokemonId": 13,
+    "pokemonName": "weedle-3",
+    "changeOfName": "5",
+    "deletedAt": false
+  },
+  {
+    "id": 20,
+    "userId": 1,
+    "pokemonId": 1,
+    "pokemonName": "bulbasaur",
+    "changeOfName": "0",
+    "deletedAt": false
+  },
+  {
+    "id": 19,
+    "userId": 1,
+    "pokemonId": 2,
+    "pokemonName": "ivysaur-0",
+    "changeOfName": "1",
+    "deletedAt": false
+  },
+  {
+    "id": 18,
+    "userId": 1,
+    "pokemonId": 8,
+    "pokemonName": "wartortle",
+    "changeOfName": "0",
+    "deletedAt": false
+  },
+  {
+    "id": 17,
+    "userId": 1,
+    "pokemonId": 10,
+    "pokemonName": "caterpie-1",
+    "changeOfName": "2",
+    "deletedAt": false
+  },
+  {
+    "id": 16,
+    "userId": 1,
+    "pokemonId": 7,
+    "pokemonName": "squirtle",
+    "changeOfName": "0",
+    "deletedAt": false
+  },
+  {
+    "id": 15,
+    "userId": 1,
+    "pokemonId": 5,
+    "pokemonName": "charmeleon",
+    "changeOfName": "0",
+    "deletedAt": false
+  }
+]
