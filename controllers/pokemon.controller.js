@@ -6,9 +6,43 @@ class Controller {
     try {
       const pokemons = await PokemonRepository.getAllPoke(req?.query);
       const { data } = pokemons;
+      const { count, next, previous } = data;
+      const allData = [];
+      for (let i = 0; i < data.results.length; i++) {
+        const poke = data.results[i];
+
+        const pokemonByUrl = await PokemonRepository.getPokeByURL(poke.url);
+        // console.log(pokemonByUrl.data);
+        const details = pokemonByUrl.data;
+        const payload = {
+          id: details.id,
+          ...poke,
+          imageUrl: details.sprites.front_default ? details.sprites.front_default : details.sprites.front_shiny,
+          weight: details.weight,
+          height: details.height,
+        };
+        allData.push(payload);
+      }
+      console.log(allData);
       return res.status(200).json({
-          status: "Success",
-          ...data,
+        status: "Success",
+        count,
+        next,
+        previous,
+        data: allData,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async getAllMyPokemon(req, res, next) {
+    try {
+      const myPokemon = await PokemonRepository.getMyPokemonAll();
+
+      return res.status(200).json({
+        status: "Success",
+        data: myPokemon,
       });
     } catch (error) {
       next(error);
@@ -29,7 +63,7 @@ class Controller {
       const isExist = await PokemonRepository.findPokemon({ userId: id, pokemonId });
       if (isExist) {
         return res.status(200).json({
-          status: "Fail",
+          status: "Done",
           message: `Pokemon dengan ID ${pokemonId} sudah pernah ditangkap...!`,
         });
       }

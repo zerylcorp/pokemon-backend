@@ -3,8 +3,8 @@ const { verifyToken } = require("../helpers/jwt");
 
 const authentication = async (req, res, next) => {
   try {
-    const { authorization } = req.headers;
-    let token = "";
+    const { authorization, access_token } = req.headers;
+    let token = access_token;
     if (authorization && authorization.startsWith("Bearer ")) {
       token = authorization.split(" ")[1];
     }

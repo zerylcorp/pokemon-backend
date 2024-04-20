@@ -1,3 +1,4 @@
+const { where } = require("sequelize");
 const { My_pokemon } = require("../models");
 const axios = require("axios");
 
@@ -16,6 +17,20 @@ class Repository {
       throw error;
     }
   }
+  static async getPokeByURL(url) {
+    try {
+      return await axios.get(url);
+    } catch (error) {
+      throw error;
+    }
+  }
+  static async getMyPokemonAll() {
+    try {
+      return await My_pokemon.findAll({ where: { deletedAt: false } });
+    } catch (error) {
+      throw error;
+    }
+  }
   static async findPokemon(query) {
     const filter = { where: query };
     try {
@@ -27,7 +42,6 @@ class Repository {
 
   static async updatePokemon(payload, query) {
     const filter = { where: { ...query, deletedAt: false } };
-
     try {
       return await My_pokemon.update(payload, filter);
     } catch (error) {
