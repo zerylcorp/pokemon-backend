@@ -96,6 +96,18 @@
 					"response": []
 				},
 				{
+					"name": "detail by ID",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8080/api/v3/pokemon/detail/12"
+					},
+					"response": []
+				},
+				{
 					"name": "pokemon catch",
 					"request": {
 						"auth": {
