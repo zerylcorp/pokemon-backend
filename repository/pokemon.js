@@ -26,7 +26,7 @@ class Repository {
   }
   static async getMyPokemonAll() {
     try {
-      return await My_pokemon.findAll({ where: { deletedAt: false } });
+      return await My_pokemon.findAll({ where: { deletedAt: false }, order: [["id", "DESC"]] });
     } catch (error) {
       throw error;
     }
