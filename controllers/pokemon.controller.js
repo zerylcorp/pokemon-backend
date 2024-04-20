@@ -48,6 +48,29 @@ class Controller {
       next(error);
     }
   }
+
+  static async getPokemonDetail(req, res, next) {
+    const { pokemonId } = req.params;
+    try {
+      const myPokemon = await PokemonRepository.getPoke({ pokemonId });
+      const details = myPokemon.data;
+      const payload = {
+        id: details.id,
+        name: details.name,
+        imageUrl: details.sprites.front_default ? details.sprites.front_default : details.sprites.front_shiny,
+        weight: details.weight,
+        species: details.species,
+        height: details.height,
+      };
+
+      return res.status(200).json({
+        status: "Success",
+        data: payload,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
   // catch api
   static async catch(req, res, next) {
     const { id } = req.user;

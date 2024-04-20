@@ -7,5 +7,6 @@ router.get("/my-list", authentication, Controller.getAllMyPokemon);
 router.post("/catch", authentication, Controller.catch);
 router.patch("/release/:pokemonId", authentication, Controller.release);
 router.patch("/rename/:pokemonId", authentication, Controller.rename);
+router.get("/detail/:pokemonId", Controller.getPokemonDetail);
 
 module.exports = router;

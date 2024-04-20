@@ -31,6 +31,7 @@ class Repository {
       throw error;
     }
   }
+  
   static async findPokemon(query) {
     const filter = { where: query };
     try {
